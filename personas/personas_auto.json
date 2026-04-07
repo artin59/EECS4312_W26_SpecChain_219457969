@@ -3,30 +3,29 @@
     {
       "id": "P1",
       "name": "Frustrated Fiona",
-      "description": "A wary and financially cautious user frustrated with Calm's payment and subscription practices",
+      "description": "A wary and frustrated user struggling with Calm's payment and subscription processes.",
       "derived_from_group": "A1",
       "goals": [
-        "To easily manage and cancel subscriptions without unexpected charges",
-        "To trust the app with financial information"
+        "To easily manage her subscription and avoid unexpected charges",
+        "To access meditation and sleep content without being misled about pricing"
       ],
       "pain_points": [
-        "Unexpected high charges and subscription renewals",
-        "Difficulties with cancellation and refund processes",
-        "Lack of transparent pricing and deceptive advertising"
+        "Difficulty canceling subscriptions and getting refunds",
+        "Unexpected charges and high prices",
+        "Poor customer service response to issues"
       ],
       "context": [
-        "Values financial security and transparency",
-        "May have neurodiverse conditions that make it hard to keep track of subscriptions",
-        "Seeks reliable and supportive customer service"
+        "Fiona values her financial security and is cautious about online transactions",
+        "She seeks a peaceful and stress-free experience from meditation and sleep apps"
       ],
       "constraints": [
-        "Limited financial resources or strict budgeting",
-        "Skepticism towards apps with complex or unclear payment structures"
+        "Limited patience for complex or unclear subscription processes",
+        "Skepticism about apps that seem to prioritize profit over user experience"
       ],
       "evidence_reviews": [
-        "48968d1a-cbdf-4067-a67f-41639ddf0612",
         "ecd07bd4-edc7-4d15-b65c-dace08093d77",
         "ac426e63-cb1b-4d2b-ad10-3ed16b75f88a",
+        "46712b4d-c9de-414d-bacd-45c735f997ed",
         "e9ab068e-94ac-4ad6-90b4-eac3d2cf2b21",
         "63fee700-05fe-4385-9b93-4f0745dfa99f"
       ]
@@ -34,69 +33,64 @@
     {
       "id": "P2",
       "name": "Meditation Enthusiast",
-      "description": "A mindfulness-focused individual seeking diverse and regularly updated meditation and sleep content.",
+      "description": "A mindfulness-focused user seeking varied and regularly updated content for better sleep and relaxation.",
       "derived_from_group": "A2",
       "goals": [
-        "Access a wide variety of meditation sessions and sleep stories",
-        "Regularly updated content to maintain engagement",
-        "Effective meditation and sleep tools to improve mental well-being"
+        "To have access to a wide variety of meditation and sleep stories",
+        "To easily manage and customize content for better sleep and relaxation"
       ],
       "pain_points": [
-        "Limited free content",
-        "Lack of variety in sleep stories and meditation sessions",
-        "Infrequent updates to existing content",
-        "Deceptive advertising practices"
+        "Lack of updated content, especially sleep stories and meditations",
+        "Inability to properly manage playlists, such as reordering or renaming them"
       ],
       "context": [
-        "Actively using meditation and sleep apps to manage stress and improve sleep quality",
-        "Willing to subscribe to a service for premium content",
-        "Values authenticity and transparency in app advertising and content delivery"
+        "Uses the Calm app primarily for nighttime relaxation and sleep",
+        "Values guided meditations, sleep stories, and calming music"
       ],
       "constraints": [
-        "Limited budget for app subscriptions",
-        "Frustrated with apps that do not deliver on their promises",
-        "Seeks a balance between free and paid content"
+        "Frustrated with the current content update frequency",
+        "Seeks more varied and engaging content, including fiction and kid stories"
       ],
       "evidence_reviews": [
         "3e888229-f3e7-4c0f-934c-06ff9d2c378a",
-        "ab7bd1b7-7821-424b-a1b5-bfd8124c2ec2",
-        "d700fc23-a725-4de4-8602-02bb00b052d6",
+        "7e89c19d-1633-4a4f-82f3-ecec4eddcf0e",
         "2a5e545e-8b96-4abd-8224-713479902766",
+        "f7b6eaff-213b-4dd5-b125-c2cf3f4ad12d",
         "6318a7cd-256b-4c72-8c54-bf5910114f8c"
       ]
     },
     {
       "id": "P3",
       "name": "Alex Chen",
-      "description": "Frustrated user seeking a seamless and accessible meditation experience",
+      "description": "Frustrated user with accessibility needs seeking a seamless meditation experience",
       "derived_from_group": "A3",
       "goals": [
-        "To easily access and use meditation content",
-        "To track progress and integrate with other health apps",
-        "To have a reliable and enjoyable user experience"
+        "To easily access and use the Calm app's features",
+        "To track meditation sessions with Google Fit",
+        "To enjoy a bug-free and intuitive user experience"
       ],
       "pain_points": [
         "Frequent app glitches and bugs",
-        "Poor navigation and search functionality",
-        "Inaccessible features for users with vision impairments",
-        "Lack of integration with Google Fit"
+        "Poor design and navigation",
+        "Inaccessible features for users with disabilities",
+        "Difficulty tracking meditation sessions with Google Fit"
       ],
       "context": [
-        "Uses the app daily for meditation and sleep",
-        "Values a clean and intuitive design",
-        "May have tried other meditation apps due to frustration"
+        "Uses Android device with TalkBack screen reader",
+        "Premium customer with a subscription",
+        "Values a clean and intuitive app design"
       ],
       "constraints": [
-        "Technical issues with app performance",
-        "Limited accessibility features",
-        "Integration issues with other health apps"
+        "Limited by app's bugs and glitches",
+        "Frustrated by lack of accessibility features",
+        "Seeking a more seamless integration with Google Fit"
       ],
       "evidence_reviews": [
+        "48968d1a-cbdf-4067-a67f-41639ddf0612",
         "de20de05-f373-46b5-b2e9-ddf361afc8d5",
         "f3b558c9-bf4e-4363-8d0a-683db913f8e6",
         "de83f5a9-ca75-4775-8a19-57047ec7f9ce",
-        "9ab0984d-80ec-4da2-ad17-564846feca8d",
-        "e7673f44-4314-4c59-8c0c-860df0a6e553"
+        "9ab0984d-80ec-4da2-ad17-564846feca8d"
       ]
     },
     {
@@ -121,44 +115,46 @@
       ],
       "constraints": [
         "May have trouble committing to a consistent meditation practice",
-        "Could be easily distracted or frustrated if not seeing immediate results"
+        "Could be skeptical of new apps or techniques"
       ],
       "evidence_reviews": [
         "67d4fd3d-6994-457b-9abc-bf8287d544ab",
-        "7e89c19d-1633-4a4f-82f3-ecec4eddcf0e",
         "8d7af262-c04b-495c-bf8d-227f4011f199",
         "d6d68313-b768-487d-9bf4-1e0b37dd26b1",
-        "6e23e7cd-926b-4e9b-9cf8-32a14cfd00a8"
+        "6ace72fb-23a2-4bc9-a9c7-c45fa59c55c8",
+        "904acc55-d963-4f90-bd06-4adeff7f891e"
       ]
     },
     {
       "id": "P5",
-      "name": "Frugal Wellness Seeker",
-      "description": "A budget-conscious individual seeking affordable meditation and sleep solutions.",
+      "name": "Frugal Mindful",
+      "description": "A budget-conscious meditator concerned about the value for money of the Calm app's subscription model.",
       "derived_from_group": "A5",
       "goals": [
-        "Find a cost-effective meditation and sleep app",
-        "Access helpful sleep aids and meditation content"
+        "To find a meditation app that provides value for money",
+        "To manage stress and improve sleep quality"
       ],
       "pain_points": [
-        "Perceived high cost of the Calm app",
-        "Difficulty affording subscription fees",
-        "Limited access to free content"
+        "Perceived high cost of the Calm app's subscription",
+        "Uncertainty about the app's value compared to free alternatives",
+        "Difficulty affording the app's premium features"
       ],
       "context": [
-        "Regularly searches for free or low-cost meditation and sleep alternatives",
-        "Considers canceling subscription due to financial constraints"
+        "Regularly uses meditation apps to manage stress and improve sleep",
+        "Familiar with free alternatives on YouTube",
+        "Sensitive to price changes and subscription models"
       ],
       "constraints": [
-        "Limited budget for wellness apps",
-        "Seeks value for money"
+        "Limited budget for meditation apps",
+        "Seeks affordable solutions for mental wellness",
+        "Willing to consider alternative apps if Calm's pricing is not justified"
       ],
       "evidence_reviews": [
-        "202108f9-ab81-40f0-b481-26edccc63e34",
         "acc74ded-275b-475c-83a8-67b8c7792291",
         "27dc5a6d-7caf-478a-98ee-a24c4af0ab49",
         "7c0ea9e5-b2a2-4128-b544-a09ad3d34bac",
-        "46712b4d-c9de-414d-bacd-45c735f997ed"
+        "4ea9b8d0-6e8f-47a9-ad88-a6d2ed4ef32c",
+        "d700fc23-a725-4de4-8602-02bb00b052d6"
       ]
     }
   ]

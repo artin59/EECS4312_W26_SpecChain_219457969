@@ -108,22 +108,23 @@ CLASSIFICATION_SYSTEM = (
 )
 
 CLASSIFICATION_USER_TEMPLATE = """\
-You are classifying user reviews of the Calm meditation and sleep app into one of the following \
-{num_groups} thematic groups:
+You are classifying user reviews into thematic groups.
 
 GROUPS:
 {groups_block}
 
-REVIEWS TO CLASSIFY (each has an id and content):
+REVIEWS TO CLASSIFY:
 {reviews_block}
 
-For each review, assign it to the single best-matching group_id. \
-If a review is too vague or irrelevant to any group, assign it to the closest one anyway.
+For each review:
+- Assign the BEST matching group_id ONLY if it clearly fits
+- If the review does NOT strongly match any group, assign "NONE"
 
-Respond ONLY with a valid JSON array like this (no extra text):
+Be strict. Do NOT force weak matches.
+
+Respond ONLY with JSON:
 [
-  {{"review_id": "<id>", "group_id": "<group_id>"}},
-  ...
+  {{"review_id": "<id>", "group_id": "<group_id OR NONE>"}}
 ]
 """
 
@@ -236,10 +237,6 @@ def discover_themes(reviews: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def classify_reviews(reviews: list[dict], themes: list[dict]) -> dict[str, list[str]]:
-    """
-    Classify every review into one of the discovered themes.
-    Returns a dict mapping group_id -> list of review_ids.
-    """
     groups_block = "\n".join(
         f"{t['group_id']}: {t['theme']} — {t['description']}" for t in themes
     )
@@ -248,13 +245,11 @@ def classify_reviews(reviews: list[dict], themes: list[dict]) -> dict[str, list[
 
     valid_reviews = [r for r in reviews if r.get("content", "").strip()]
     total = len(valid_reviews)
-    print(f"[INFO] Pass 2 – Classifying {total} reviews in batches of {CLASSIFICATION_BATCH} ...")
+
+    print(f"[INFO] Classifying {total} reviews with strict filtering...")
 
     for batch_start in range(0, total, CLASSIFICATION_BATCH):
         batch = valid_reviews[batch_start : batch_start + CLASSIFICATION_BATCH]
-        batch_num   = batch_start // CLASSIFICATION_BATCH + 1
-        num_batches = (total + CLASSIFICATION_BATCH - 1) // CLASSIFICATION_BATCH
-        print(f"       Batch {batch_num}/{num_batches} ({len(batch)} reviews) ...")
 
         reviews_block = json.dumps(
             [{"review_id": r["reviewId"], "content": r["content"]} for r in batch],
@@ -271,72 +266,74 @@ def classify_reviews(reviews: list[dict], themes: list[dict]) -> dict[str, list[
         raw = call_groq(
             messages=[
                 {"role": "system", "content": CLASSIFICATION_SYSTEM},
-                {"role": "user",   "content": user_msg},
+                {"role": "user", "content": user_msg},
             ],
             temperature=0.0,
-            max_tokens=2048,
         )
 
         parsed = safe_json_parse(raw)
-        if parsed is None or not isinstance(parsed, list):
-            print(f"[WARN] Batch {batch_num} parse failed; skipping.")
+        if parsed is None:
+            print("[WARN] Skipping batch due to parse failure")
             continue
 
         for item in parsed:
-            rid = item.get("review_id", "")
-            gid = item.get("group_id",  "")
+            rid = item.get("review_id")
+            gid = item.get("group_id")
+
+            # 🔥 NEW: skip irrelevant reviews
+            if gid == "NONE":
+                continue
+
             if gid in assignments:
                 assignments[gid].append(rid)
             else:
-                first_gid = themes[0]["group_id"]
-                assignments[first_gid].append(rid)
-                print(f"[WARN] Unknown group_id '{gid}' for review {rid[:8]}, assigned to {first_gid}")
+                # skip unknown instead of forcing
+                print(f"[WARN] Invalid group {gid}, skipping {rid[:8]}")
 
-        time.sleep(2)  # Stay within Groq rate limits
+        time.sleep(2)
 
     return assignments
-
 
 # ---------------------------------------------------------------------------
 # STEP 3 – BUILD FINAL JSON STRUCTURE
 # ---------------------------------------------------------------------------
 
-def build_groups_json(
-    themes: list[dict],
-    assignments: dict[str, list[str]],
-    all_reviews: list[dict],
-) -> dict:
-    """Assemble the final review_groups_auto.json structure."""
+def build_groups_json(themes, assignments, all_reviews):
     review_lookup = {r["reviewId"]: r for r in all_reviews}
 
     groups = []
+
     for theme in themes:
         gid  = theme["group_id"]
         rids = assignments.get(gid, [])
 
+        # 🔥 NEW: enforce minimum size
         if len(rids) < MIN_REVIEWS_PER_GROUP:
-            print(
-                f"[WARN] Group {gid} has only {len(rids)} reviews "
-                f"(minimum is {MIN_REVIEWS_PER_GROUP}). "
-                "Consider re-running with a larger dataset or fewer groups."
-            )
+            print(f"[INFO] Dropping group {gid} (only {len(rids)} reviews)")
+            continue
 
-        # Pick the most informative examples (longest content first)
         candidates = [review_lookup[rid] for rid in rids if rid in review_lookup]
-        candidates_sorted = sorted(candidates, key=lambda r: len(r.get("content", "")), reverse=True)
+
+        candidates_sorted = sorted(
+            candidates,
+            key=lambda r: len(r.get("content", "")),
+            reverse=True
+        )
+
         examples = [r["content"] for r in candidates_sorted[:EXAMPLE_REVIEWS_PER_GROUP]]
 
         groups.append({
-            "group_id":        gid,
-            "theme":           theme["theme"],
-            "description":     theme["description"],
-            "review_ids":      rids,
-            "review_count":    len(rids),
+            "group_id": gid,
+            "theme": theme["theme"],
+            "description": theme["description"],
+            "review_ids": rids,
+            "review_count": len(rids),
             "example_reviews": examples,
         })
 
-    return {"groups": groups}
+    print(f"[INFO] Final groups after filtering: {len(groups)}")
 
+    return {"groups": groups}
 
 # ---------------------------------------------------------------------------
 # STEP 4 – SAVE OUTPUT
@@ -447,7 +444,7 @@ def main():
     # 8. Save personas
     save_personas(personas_data)
 
-    print("\n[DONE] Step 4.2 complete.")
+    print("\n[DONE] complete.")
 
 if __name__ == "__main__":
     main()
