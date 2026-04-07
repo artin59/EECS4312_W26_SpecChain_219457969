@@ -1,8 +1,11 @@
 """
 EECS 4312 - SpecChain Project
-Step 5.5: Compute Metrics for Hybrid Pipeline
+Compute Metrics for Automated + Hybrid Pipelines
 
-Output: metrics/metrics_hybrid.json
+Outputs:
+- metrics/metrics_auto.json
+- metrics/metrics_hybrid.json
+- metrics/metrics_summary.json
 """
 
 import json
@@ -10,16 +13,27 @@ import re
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# PATHS (HYBRID)
+# PATHS
 # ---------------------------------------------------------------------------
-DATASET_PATH  = Path("data/reviews_clean.jsonl")
+DATASET_PATH = Path("data/reviews_clean.jsonl")
 
-GROUPS_PATH   = Path("data/review_groups_hybrid.json")
-PERSONAS_PATH = Path("personas/personas_hybrid.json")
-SPEC_PATH     = Path("spec/spec_hybrid.md")
-TESTS_PATH    = Path("tests/tests_hybrid.json")
+AUTO_PATHS = {
+    "groups": Path("data/review_groups_auto.json"),
+    "personas": Path("personas/personas_auto.json"),
+    "spec": Path("spec/spec_auto.md"),
+    "tests": Path("tests/tests_auto.json"),
+    "output": Path("metrics/metrics_auto.json")
+}
 
-OUTPUT_PATH   = Path("metrics/metrics_hybrid.json")
+HYBRID_PATHS = {
+    "groups": Path("data/review_groups_hybrid.json"),
+    "personas": Path("personas/personas_hybrid.json"),
+    "spec": Path("spec/spec_hybrid.md"),
+    "tests": Path("tests/tests_hybrid.json"),
+    "output": Path("metrics/metrics_hybrid.json")
+}
+
+SUMMARY_PATH = Path("metrics/metrics_summary.json")
 
 # ---------------------------------------------------------------------------
 # HELPERS
@@ -30,29 +44,26 @@ def load_json(path):
         return json.load(f)
 
 def load_spec_requirements(md_text):
-    """Extract FR_auto_X IDs from spec"""
     pattern = r"# Requirement ID: (FR_auto_\d+)"
     return re.findall(pattern, md_text)
 
 def load_dataset_size():
-    """Count number of reviews in JSONL dataset (ignores empty lines)"""
     with open(DATASET_PATH, "r", encoding="utf-8") as f:
         return sum(1 for line in f if line.strip())
 
 def normalize_req_id(rid):
-    """Convert FR_hybrid_X → FR_auto_X for consistency"""
     return rid.replace("FR_hybrid_", "FR_auto_")
 
 # ---------------------------------------------------------------------------
-# METRICS
+# CORE METRICS FUNCTION (REUSABLE)
 # ---------------------------------------------------------------------------
 
-def compute_metrics():
-    groups_data   = load_json(GROUPS_PATH)
-    personas_data = load_json(PERSONAS_PATH)
-    tests_data    = load_json(TESTS_PATH)
+def compute_metrics(paths, pipeline_name):
+    groups_data   = load_json(paths["groups"])
+    personas_data = load_json(paths["personas"])
+    tests_data    = load_json(paths["tests"])
 
-    with open(SPEC_PATH, "r", encoding="utf-8") as f:
+    with open(paths["spec"], "r", encoding="utf-8") as f:
         spec_text = f.read()
 
     groups   = groups_data["groups"]
@@ -62,43 +73,34 @@ def compute_metrics():
     req_ids = load_spec_requirements(spec_text)
     req_id_set = set(req_ids)
 
-    # -----------------------------
-    # BASIC COUNTS
-    # -----------------------------
     dataset_size = load_dataset_size()
     persona_count = len(personas)
     requirements_count = len(req_ids)
     tests_count = len(tests)
 
-    # -----------------------------
-    # TRACEABILITY LINKS
-    # -----------------------------
-    # persona → group
+    # TRACEABILITY
     persona_links = sum(1 for p in personas if p.get("derived_from_group"))
 
-    # requirement → persona (approx: persona name appears in spec)
-    req_links = 0
-    for p in personas:
-        if p.get("name") and p["name"] in spec_text:
-            req_links += 1
+    req_links = sum(
+        1 for p in personas
+        if p.get("name") and p["name"] in spec_text
+    )
 
-    # test → requirement
     test_links = len(tests)
-
     traceability_links = persona_links + req_links + test_links
 
-    # -----------------------------
-    # REVIEW COVERAGE
-    # -----------------------------
-    total_reviews_in_groups = sum(len(g["review_ids"]) for g in groups)
+    # REVIEW COVERAGE (handle both formats safely)
+    total_reviews_in_groups = sum(
+        len(g.get("review_ids", g.get("reviews", [])))
+        for g in groups
+    )
+
     review_coverage = (
         total_reviews_in_groups / dataset_size
         if dataset_size else 0
     )
 
-    # -----------------------------
-    # TRACEABILITY RATIO (FIXED)
-    # -----------------------------
+    # TRACEABILITY RATIO
     linked_requirements = len(set(
         normalize_req_id(t["requirement_id"])
         for t in tests
@@ -111,14 +113,9 @@ def compute_metrics():
         if requirements_count else 0
     )
 
-    # -----------------------------
-    # TESTABILITY RATE
-    # -----------------------------
     testability_rate = traceability_ratio
 
-    # -----------------------------
-    # AMBIGUITY RATIO
-    # -----------------------------
+    # AMBIGUITY
     ambiguous_words = ["may", "might", "could", "etc", "various", "some"]
 
     requirement_blocks = re.findall(
@@ -126,22 +123,18 @@ def compute_metrics():
         spec_text
     )
 
-    ambiguous_count = 0
-    for block in requirement_blocks:
-        block_lower = block.lower()
-        if any(word in block_lower for word in ambiguous_words):
-            ambiguous_count += 1
+    ambiguous_count = sum(
+        1 for block in requirement_blocks
+        if any(word in block.lower() for word in ambiguous_words)
+    )
 
     ambiguity_ratio = (
         ambiguous_count / requirements_count
         if requirements_count else 0
     )
 
-    # -----------------------------
-    # FINAL OUTPUT
-    # -----------------------------
     return {
-        "pipeline": "hybrid",
+        "pipeline": pipeline_name,
         "dataset_size": dataset_size,
         "persona_count": persona_count,
         "requirements_count": requirements_count,
@@ -154,29 +147,59 @@ def compute_metrics():
     }
 
 # ---------------------------------------------------------------------------
-# SAVE
+# SAVE FUNCTIONS
 # ---------------------------------------------------------------------------
 
-def save_metrics(metrics):
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+def save_metrics(metrics, path):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
-    print(f"[INFO] Saved {OUTPUT_PATH}")
+    print(f"[INFO] Saved {path}")
+
+def update_summary(auto_metrics, hybrid_metrics):
+    summary = {}
+
+    if SUMMARY_PATH.exists():
+        with open(SUMMARY_PATH, "r", encoding="utf-8") as f:
+            summary = json.load(f)
+
+    manual = summary.get("manual", {})
+
+    auto_clean = dict(auto_metrics)
+    auto_clean.pop("pipeline", None)
+
+    hybrid_clean = dict(hybrid_metrics)
+    hybrid_clean.pop("pipeline", None)
+
+    final = {
+        "manual": manual,
+        "automated": auto_clean,
+        "hybrid": hybrid_clean
+    }
+
+    SUMMARY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(SUMMARY_PATH, "w", encoding="utf-8") as f:
+        json.dump(final, f, indent=2)
+
+    print(f"[INFO] Updated {SUMMARY_PATH}")
 
 # ---------------------------------------------------------------------------
 # MAIN
 # ---------------------------------------------------------------------------
 
 def main():
-    metrics = compute_metrics()
+    print("\n--- COMPUTING AUTOMATED METRICS ---")
+    auto_metrics = compute_metrics(AUTO_PATHS, "automated")
+    save_metrics(auto_metrics, AUTO_PATHS["output"])
 
-    print("\n[METRICS SUMMARY - HYBRID]")
-    for k, v in metrics.items():
-        print(f"{k}: {v}")
+    print("\n--- COMPUTING HYBRID METRICS ---")
+    hybrid_metrics = compute_metrics(HYBRID_PATHS, "hybrid")
+    save_metrics(hybrid_metrics, HYBRID_PATHS["output"])
 
-    save_metrics(metrics)
+    print("\n--- UPDATING SUMMARY ---")
+    update_summary(auto_metrics, hybrid_metrics)
 
-    print("\n[DONE] Step 5.5 complete.")
+    print("\n[DONE] All metrics computed.")
 
 if __name__ == "__main__":
     main()
