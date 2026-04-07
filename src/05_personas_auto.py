@@ -116,15 +116,16 @@ GROUPS:
 REVIEWS TO CLASSIFY:
 {reviews_block}
 
-For each review:
-- Assign the BEST matching group_id ONLY if it clearly fits
-- If the review does NOT strongly match any group, assign "NONE"
-
-Be strict. Do NOT force weak matches.
+RULES:
+- Only assign a review to a group if the review is PRIMARILY and CENTRALLY about that theme
+- A passing mention is NOT enough — the theme must be the main point of the review
+- If a review touches multiple themes, assign NONE
+- If unsure, assign NONE
+- Expect to assign NONE to at least 30-40% of reviews
 
 Respond ONLY with JSON:
 [
-  {{"review_id": "<id>", "group_id": "<group_id OR NONE>"}}
+  {{"review_id": "<id>", "group_id": "<group_id OR NONE>", "confidence": <0.0-1.0>}}
 ]
 """
 
@@ -144,9 +145,10 @@ def load_reviews(path: Path) -> list[dict]:
     return reviews
 
 
-def call_groq(messages: list[dict], temperature: float = 0.2, max_tokens: int = 4096) -> str:
-    """Send a chat completion request to Groq and return the assistant text."""
+def call_groq(messages: list[dict], temperature: float = 0.2, max_tokens: int = 4096, retries: int = 5) -> str:
+    """Send a chat completion request to Groq with exponential backoff on 429."""
     import urllib.request
+    import urllib.error
 
     payload = {
         "model": GROQ_MODEL,
@@ -155,22 +157,33 @@ def call_groq(messages: list[dict], temperature: float = 0.2, max_tokens: int = 
         "max_tokens": max_tokens,
     }
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        GROQ_URL,
-        data=data,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {GROQ_API_KEY}",
-            "User-Agent": "Mozilla/5.0"
-        },
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            body = json.loads(resp.read().decode("utf-8"))
-            return body["choices"][0]["message"]["content"].strip()
-    except Exception as e:
-        raise RuntimeError(f"Groq API call failed: {e}")
+
+    for attempt in range(retries):
+        req = urllib.request.Request(
+            GROQ_URL,
+            data=data,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {GROQ_API_KEY}",
+                "User-Agent": "Mozilla/5.0"
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+                return body["choices"][0]["message"]["content"].strip()
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = (2 ** attempt) + random.uniform(0, 1)  # exponential backoff + jitter
+                print(f"[WARN] Rate limited (429). Waiting {wait:.1f}s before retry {attempt + 1}/{retries}...")
+                time.sleep(wait)
+            else:
+                raise RuntimeError(f"Groq API call failed: {e}")
+        except Exception as e:
+            raise RuntimeError(f"Groq API call failed: {e}")
+
+    raise RuntimeError("Max retries exceeded due to rate limiting.")
 
 
 def safe_json_parse(text: str):
@@ -279,9 +292,9 @@ def classify_reviews(reviews: list[dict], themes: list[dict]) -> dict[str, list[
         for item in parsed:
             rid = item.get("review_id")
             gid = item.get("group_id")
+            confidence = item.get("confidence", 1.0)
 
-            # 🔥 NEW: skip irrelevant reviews
-            if gid == "NONE":
+            if gid == "NONE" or confidence < 0.75:  # tune this threshold
                 continue
 
             if gid in assignments:
@@ -290,7 +303,7 @@ def classify_reviews(reviews: list[dict], themes: list[dict]) -> dict[str, list[
                 # skip unknown instead of forcing
                 print(f"[WARN] Invalid group {gid}, skipping {rid[:8]}")
 
-        time.sleep(2)
+        time.sleep(5)
 
     return assignments
 
@@ -396,7 +409,7 @@ def generate_personas(groups_data: dict) -> dict:
 
         personas.append(parsed)
 
-        time.sleep(2)  # avoid rate limit
+        time.sleep(5)  # avoid rate limit
 
     return {"personas": personas}
 
