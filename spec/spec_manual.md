@@ -1,8 +1,14 @@
 # Requirement ID: FR1
-- Description: The system shall display a clear notification of the subscription price and billing date before a user activates a free trial
+- Description: The system shall display a clear notification of the subscription price
 - Source Persona: Daniel, Frustrated Subscriber
 - Traceability: Derived from review group G1
-- Acceptance Criteria: Given a user is about to start a free trial When the user reaches the confirmation screen Then the system must display the exact price and billing date before activation
+- Acceptance Criteria: Given a user is about to start a free trial When the user reaches the confirmation screen Then the system must display the exact price before activation
+
+# Requirement ID: FR1.5
+- Description: The system shall display a clear notification of the billing date before a user activates a free trial
+- Source Persona: Daniel, Frustrated Subscriber
+- Traceability: Derived from review group G1
+- Acceptance Criteria: Given a user is about to start a free trial When the user reaches the confirmation screen Then the system must display the billing date before activation
 
 # Requirement ID: FR2
 - Description: The system shall allow users to cancel their subscription at any time through an easily accessible option within the app
