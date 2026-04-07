@@ -91,16 +91,6 @@
       "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
     },
     {
-      "test_id": "T_hybrid_9",
-      "requirement_id": "FR_hybrid_9",
-      "notes": "This requirement has been deleted"
-    },
-    {
-      "test_id": "T_hybrid_10",
-      "requirement_id": "FR_hybrid_10",
-      "notes": "This requirement has been deleted"
-    },
-    {
       "test_id": "T_hybrid_11",
       "requirement_id": "FR_hybrid_11",
       "scenario": "Validate looping sound playback",
@@ -123,11 +113,6 @@
       ],
       "expected_result": "The user's number of sessions is displayed as 1",
       "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
-    },
-    {
-      "test_id": "T_hybrid_13",
-      "requirement_id": "FR_hybrid_13",
-      "notes": "This requirement has been deleted"
     },
     {
       "test_id": "T_hybrid_14",

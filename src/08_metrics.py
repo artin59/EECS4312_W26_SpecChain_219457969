@@ -1,8 +1,8 @@
 """
 EECS 4312 - SpecChain Project
-Step 4.5: Compute Metrics for Automated Pipeline
+Step 5.5: Compute Metrics for Hybrid Pipeline
 
-Output: metrics/metrics_auto.json
+Output: metrics/metrics_hybrid.json
 """
 
 import json
@@ -10,15 +10,16 @@ import re
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# PATHS
+# PATHS (HYBRID)
 # ---------------------------------------------------------------------------
-DATASET_PATH  = Path("data/reviews_clean.jsonl")   # ✅ FIXED
-GROUPS_PATH   = Path("data/review_groups_auto.json")
-PERSONAS_PATH = Path("personas/personas_auto.json")
-SPEC_PATH     = Path("spec/spec_auto.md")
-TESTS_PATH    = Path("tests/tests_auto.json")
+DATASET_PATH  = Path("data/reviews_clean.jsonl")
 
-OUTPUT_PATH   = Path("metrics/metrics_auto.json")
+GROUPS_PATH   = Path("data/review_groups_hybrid.json")
+PERSONAS_PATH = Path("personas/personas_hybrid.json")
+SPEC_PATH     = Path("spec/spec_hybrid.md")
+TESTS_PATH    = Path("tests/tests_hybrid.json")
+
+OUTPUT_PATH   = Path("metrics/metrics_hybrid.json")
 
 # ---------------------------------------------------------------------------
 # HELPERS
@@ -34,9 +35,13 @@ def load_spec_requirements(md_text):
     return re.findall(pattern, md_text)
 
 def load_dataset_size():
-    """Count number of reviews in JSONL dataset"""
+    """Count number of reviews in JSONL dataset (ignores empty lines)"""
     with open(DATASET_PATH, "r", encoding="utf-8") as f:
-        return sum(1 for _ in f)
+        return sum(1 for line in f if line.strip())
+
+def normalize_req_id(rid):
+    """Convert FR_hybrid_X → FR_auto_X for consistency"""
+    return rid.replace("FR_hybrid_", "FR_auto_")
 
 # ---------------------------------------------------------------------------
 # METRICS
@@ -55,11 +60,12 @@ def compute_metrics():
     tests    = tests_data["tests"]
 
     req_ids = load_spec_requirements(spec_text)
+    req_id_set = set(req_ids)
 
     # -----------------------------
     # BASIC COUNTS
     # -----------------------------
-    dataset_size = load_dataset_size()  # ✅ FIXED
+    dataset_size = load_dataset_size()
     persona_count = len(personas)
     requirements_count = len(req_ids)
     tests_count = len(tests)
@@ -84,17 +90,21 @@ def compute_metrics():
     # -----------------------------
     # REVIEW COVERAGE
     # -----------------------------
-    total_reviews_in_groups = sum(g["review_count"] for g in groups)
-
+    total_reviews_in_groups = sum(len(g["review_ids"]) for g in groups)
     review_coverage = (
         total_reviews_in_groups / dataset_size
         if dataset_size else 0
     )
 
     # -----------------------------
-    # TRACEABILITY RATIO
+    # TRACEABILITY RATIO (FIXED)
     # -----------------------------
-    linked_requirements = len(set(t["requirement_id"] for t in tests))
+    linked_requirements = len(set(
+        normalize_req_id(t["requirement_id"])
+        for t in tests
+        if "requirement_id" in t and
+           normalize_req_id(t["requirement_id"]) in req_id_set
+    ))
 
     traceability_ratio = (
         linked_requirements / requirements_count
@@ -104,7 +114,7 @@ def compute_metrics():
     # -----------------------------
     # TESTABILITY RATE
     # -----------------------------
-    testability_rate = traceability_ratio  # same definition
+    testability_rate = traceability_ratio
 
     # -----------------------------
     # AMBIGUITY RATIO
@@ -128,10 +138,10 @@ def compute_metrics():
     )
 
     # -----------------------------
-    # FINAL OUTPUT FORMAT
+    # FINAL OUTPUT
     # -----------------------------
     return {
-        "pipeline": "automated",
+        "pipeline": "hybrid",
         "dataset_size": dataset_size,
         "persona_count": persona_count,
         "requirements_count": requirements_count,
@@ -160,13 +170,13 @@ def save_metrics(metrics):
 def main():
     metrics = compute_metrics()
 
-    print("\n[METRICS SUMMARY]")
+    print("\n[METRICS SUMMARY - HYBRID]")
     for k, v in metrics.items():
         print(f"{k}: {v}")
 
     save_metrics(metrics)
 
-    print("\n[DONE] Step 4.5 complete.")
+    print("\n[DONE] Step 5.5 complete.")
 
 if __name__ == "__main__":
     main()

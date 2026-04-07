@@ -68,11 +68,10 @@
 - Acceptance Criteria: Given a user with vision impairments is using the app, When the user enables screen reader feature, Then the app shall provide screen reader functionality across the whole app
 - Notes: Requirement was way too broad and ambigous so I brought it down to one accesebaility feature
 
-# Requirement ID: FR_auto_
-
+# Requirement 9
 - Notes: I removed this requirement because it didn't make any sense, had multiple requirements within 1, and was way too broad and ambigous. In all it was beyond saving
 
-# Requirement ID: FR_auto_
+# Rquirement 10
 - Notes: I removed this requirement because it didn't make any sense, had multiple requirements within 1, and was way too broad and ambigous. In all it was beyond saving
 
 
@@ -90,7 +89,7 @@
 - Acceptance Criteria: Given a user has completed a meditation or sleep session, When they view their progress dashboard, Then their total number of sessions are displayed accurately 
 - Notes: Too ambigous and multiple requirements so I brought it down to 1 good requirement
 
-# Requirement ID: FR_auto_13
+# Requirement 13
 - Notes: This is the same as requirement 1 and 1.5
 
 # Requirement ID: FR_auto_14
