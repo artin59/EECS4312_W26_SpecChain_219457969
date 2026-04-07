@@ -2,30 +2,159 @@
   "personas": [
     {
       "id": "P_hybrid_1",
-      "name": "Frequent Fitness Logger",
-      "description": "A user who depends on the app for regular workout tracking and expects logging to work reliably during or immediately after exercise.",
-      "derived_from_group": "H1",
+      "name": "Frustrated Fiona",
+      "description": "A wary app user struggling with unexpected charges and subscription issues",
+      "derived_from_group": "P1",
       "goals": [
-        "Log workouts quickly",
-        "Track activities without interruption"
+        "To easily try out the Calm app without being charged unexpectedly",
+        "To cancel the subscription without hassle if not satisfied"
       ],
       "pain_points": [
-        "The app crashes while saving workouts",
-        "Previously entered activity data may disappear"
+        "Unexpected charges despite free trial claims",
+        "Difficulties in canceling subscriptions",
+        "Lack of transparency in payment and subscription processes"
       ],
       "context": [
-        "Using the app during exercise sessions",
-        "Using the app outdoors or while moving"
+        "Busy life with limited financial flexibility",
+        "Seeking relaxation and sleep solutions through apps like Calm",
+        "Wary of online transactions and subscription services"
       ],
       "constraints": [
-        "Workout logging must complete without crashing",
-        "Saved workout data must persist"
+        "Limited financial resources",
+        "Frustration with complex or unclear processes"
       ],
       "evidence_reviews": [
-        "rev_12",
-        "rev_41"
+        "7c0ea9e5-b2a2-4128-b544-a09ad3d34bac",
+        "63fee700-05fe-4385-9b93-4f0745dfa99f",
+        "d653d21f-589c-4391-b58f-feb6e3b8f7cb"
       ],
-      "notes": "Refined the persona description and removed an unsupported assumption about synchronization."
+      "notes": "Removed an unrelated constraint about privacy and security. Removed 3 of the irrelevant evidence reviews, and added 3 relevent ones from the review_groups_hybrid.json"
+    },
+    {
+      "id": "P_hybrid_2",
+      "name": "Disappointed Calm User",
+      "description": "A long-time Calm app user who strictly uses the free version and is disappointed with the lack of updated content and poor audio quality.",
+      "derived_from_group": "P2",
+      "goals": [
+        "Access a wide variety of high-quality meditation and sleep content",
+        "Improve daily meditation and sleep routine"
+      ],
+      "pain_points": [
+        "Limited and infrequently updated free content",
+        "Poor audio quality in meditation sessions",
+        "Lack of variety in sleep stories"
+      ],
+      "context": [
+        "Uses Calm app daily for meditation and sleep",
+        "Values soothing and calming content",
+        "Frustrated with current content offerings"
+      ],
+      "constraints": [
+        "Limited budget, considering free version limitations",
+        "Technical issues with playback quality"
+      ],
+      "evidence_reviews": [
+        "3e888229-f3e7-4c0f-934c-06ff9d2c378a",
+        "2a5e545e-8b96-4abd-8224-713479902766"
+      ],
+      "notes": "Refined description to match the persona better based on the pain points and constarints. Also removed irrelevent evidence reviews"
+    },
+    {
+      "id": "P_hybrid_3",
+      "name": "Annoyed, Alex",
+      "description": "Frustrated user seeking a seamless and accessible meditation experience",
+      "derived_from_group": "P3",
+       "goals": [
+        "Enjoy a stable and user-friendly meditation app experience",
+        "Easily access and track meditation sessions across devices"
+      ],
+      "pain_points": [
+        "Dealing with a buggy app that frequently glitches",
+        "Difficulty navigating and finding content",
+        "Lack of accessibility features for users with vision impairments",
+        "Inconsistent data tracking across platforms"
+      ],
+      "context": [
+        "Uses Calm app for meditation and sleep",
+        "Values a well-designed and intuitive app",
+        "May have tried other meditation apps due to frustration"
+      ],
+      "constraints": [
+        "Limited patience for technical issues and poor design",
+        "Seeking an app that caters to accessibility needs"
+      ],
+      "evidence_reviews": [
+        "de83f5a9-ca75-4775-8a19-57047ec7f9ce",
+        "9ab0984d-80ec-4da2-ad17-564846feca8d",
+        "e7673f44-4314-4c59-8c0c-860df0a6e553",
+        "c6455599-e661-4b5e-80b7-007b6eb8ed0e"
+      ],
+      "notes": "Removed 1 irrelevant evidence review and changed the name to match the format of all the other personas"
+    },
+    {
+      "id": "P_hybrid_4",
+      "name": "Mindful Emma",
+      "description": "A stressed individual seeking relaxation and sleep through meditation and calming sounds",
+      "derived_from_group": "P4",
+      "goals": [
+        "Improve sleep quality",
+        "Reduce stress and anxiety",
+        "Enhance mental well-being through meditation and relaxation"
+      ],
+      "pain_points": [
+        "Difficulty falling asleep",
+        "Racing mind and anxiety",
+        "Need for a calming and soothing escape from daily stress"
+      ],
+      "context": [
+        "Uses meditation and sleep apps to manage stress and improve sleep",
+        "Values ease of navigation and high-quality audio in relaxation apps",
+        "Seeks to incorporate relaxation practices into daily routine"
+      ],
+      "constraints": [
+        "May have trouble committing to a consistent meditation practice",
+        "Might be easily distracted or frustrated if not provided with engaging content"
+      ],
+      "evidence_reviews": [
+        "67d4fd3d-6994-457b-9abc-bf8287d544ab",
+        "8d7af262-c04b-495c-bf8d-227f4011f199",
+        "d6d68313-b768-487d-9bf4-1e0b37dd26b1",
+        "6ace72fb-23a2-4bc9-a9c7-c45fa59c55c8",
+        "74f3b521-dca8-466a-832e-07da47fd40fd"
+      ],
+      "notes": "No notes. Didn't modify anything since everything looked good"
+    },
+    {
+      "id": "P_hybrid_5",
+      "name": "Skeptical Sarah",
+      "description": "A cautious and frustrated user who questions the trustworthiness of the Calm app due to deceptive advertising and poor customer support.",
+      "derived_from_group": "P5",
+      "goals": [
+        "To find a reliable and transparent meditation app",
+        "To be able to resolve issues easily and quickly by contacting customer support"
+      ],
+      "pain_points": [
+        "Deceptive advertising and false price points",
+        "Poor customer support and unresponsive teams",
+        "Concerns about data usage and privacy"
+      ],
+      "context": [
+        "Sees ads and subscription offers that seem too good to be true",
+        "Values transparency and honesty in business practices",
+        "Is frustrated with lack of response from support teams"
+      ],
+      "constraints": [
+        "Limited budget and wary of high subscription fees",
+        "Values control over personal data and online activity"
+      ],
+      "evidence_reviews": [
+        "ac426e63-cb1b-4d2b-ad10-3ed16b75f88a",
+        "599953d6-b77b-482d-aea6-b6b810ab28b7",
+        "0ecd1677-5997-4c81-b246-c3469c584ebb",
+        "3b3abf97-0b67-43b0-8ebe-7cbb4996a664",
+        "cc77717b-8b33-4e8b-9c55-544a10025ddb"
+      ],
+      "notes": "Removed and added a new goal since the old one did not match this persona (it would fit more with persona 1 since it was about subscription and billing issues)"
     }
   ]
 }
