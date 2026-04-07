@@ -1,22 +1,152 @@
 {  "personas": [
     {
       "id": "P1",
-      "name": "Frequent Activity Tracker",
-      "description": "A user who relies on the app to log workouts frequently and expects stable performance.",
+      "name": "Daniel, Frustrated Subscriber",
+      "description": "Daniel is a 34 year old high school teacher from Toronto, Canada who signed up for Calm's free 7-day trial after seeing a social media ad. He is not very tech savvy and doesn't read the subscription fine prints. He expected to explore the app risk-free, but got a $79.99 charge on his bank account",
       "derived_from_group": "G1",
       "goals": [
-        "Track workouts consistently",
-        "Log activity quickly"      ],
+        "Trying out a meditation app before paying a full subscription",
+        "Easily cancel subscriptions",
+        "Avoid unexpected charges"
+      ],
       "pain_points": [
-        "App crashes during logging",
-        "Workout data sometimes disappears"      ],
+        "Getting an unexpected fee/charge before the trial ends",
+        "Difficulty canceling the subscription"
+        ],
       "context": [
-        "Logging activities immediately after workouts",
-        "Using the app during outdoor exercise"      ],
+        "Cancels the subsciption on the day the trial ends",
+        "Uses Google Play subscription management"
+      ],
       "constraints": [
-        "Logging must be reliable",
-        "Data should not be lost"       ],
+        "Billing, fees and charges should be transparent",
+        "Requesting a refund should be fairly easy"       
+      ],
       "evidence_reviews": [
-        "rev_12",
-        "rev_45"      ]
-    }  ] }
+        "59416d34-d9b9-4aac-bf40-666c2e33d6dc",
+        "20b5a73e-28fa-4666-80b1-76537165ecf5",
+        "e260bbfe-73a3-41ba-ab36-a27c8b843222",
+        "c691e57f-13b8-4fb9-aec4-f8fffe50b3f9",
+        "21836793-f45d-4e6b-9d5a-aad78cc6b360"
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Ad-Overwhelmed, Emma",
+      "description": "Emma is a first year university student, who uses the free version of the calm app at nights to fall asleep easier. However, everytime she tries to open the app, she has to go through many popup ads to get to the actual app. Also everytime she's about to fall asleep an ad shows up which makes it harder for her to sleep",
+      "derived_from_group": "G2",
+      "goals": [
+        "Listen to calm audios at night to fall asleep",
+        "Use the free version without bombardment of ads",
+        "Access calming content immediately upon opening the app"
+      ],
+      "pain_points": [
+        "Having to X out of many ads when opening the app",
+        "Feeling pressured into purchasing the premium subscription",
+        "Getting an egregious amount of subscribe now ads"
+        ],
+      "context": [
+        "Uses the app during moments of stress or anxiety",
+        "Uses the app in quiet environments"
+      ],
+      "constraints": [
+        "Interruptions must be minimal during use",
+        "Audio Ads shouldn't play when calming content is playing"       
+      ],
+      "evidence_reviews": [
+        "89f1cd49-0b84-4814-97bf-6aa2ee2cc3f5",
+        "88124acc-b1e9-477a-b49c-f275336f6379",
+        "4e9e30fa-d97a-4c36-bf93-8a6e40fe1745",
+        "822e45f2-fef0-472d-a277-3e7af2137cca"
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "Walter, Frustrated Senior User",
+      "description": "Walter is a 67 year old retired grandfather. He has very low knowledge of technoclogy. He uses calm for daily meditation practice. However, he becomes increasingly frustrated when bugs and performance issues disrupt his routine",
+      "derived_from_group": "G3",
+      "goals": [
+        "Use the calm app to practice meditation",
+        "Maintain a consistent mindfulness routine"
+      ],
+      "pain_points": [
+        "The app crashing out of nowhere",
+        "The app being very slow",
+        "Audio/videos not loading or playing"
+        ],
+      "context": [
+        "Uses the app during structured routines/times",
+        "Wakes up frequently at night and relies on the app to fall back asleep"
+      ],
+      "constraints": [
+        "UI/UX must be user-friendly",
+        "No interruptions (technical difficulties or app crashing during meditation)"
+      ],
+      "evidence_reviews": [
+        "cacb8307-e35d-4693-8b9d-2e60b340d134",
+        "81dfba9c-2973-41f8-a263-c3c42c2d3ef2",
+        "a77b4779-3669-4753-a55d-924e6fa170e1",
+        "2911019a-782f-48fb-8963-33a1463969e6"
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Ignored customer, Batrice",
+      "description": "Beatrice is a 43 year old doctor. She is a paying customer who encounters issues and feels neglected due to very slow or even nonexistent responses from customer support, leading to frustration and loss of trust",
+      "derived_from_group": "G4",
+      "goals": [
+        "Resolve technical or billing issues quickly",
+        "Receive timely and helpful responses from customer support"
+      ],
+      "pain_points": [
+        "Getting an automated email with no actual help",
+        "Feeling ignored after multiple attempts of getting in contact with customer service",
+        "Having to talk to AI to solve an issue"
+     ],
+      "context": [
+        "Contacts support after encountering issues",
+        "Uses email and ticket-based systems "
+      ],
+      "constraints": [
+        "Not tech-savvy so needs active help from customer support",
+        "Doesn't have time to follow-up many times to get a response"
+      ],
+      "evidence_reviews": [
+        "9c56c866-5626-470a-b3c6-5f649dfa159b",
+        "064f19e9-8d33-4162-bdc9-52d7b303b0c2",
+        "c14f3a79-0f9a-489f-832d-2728ab3c2861",
+        "e836d4eb-8457-49fd-bd74-1cfa112d5213"
+      ]
+    },  
+    {
+      "id": "P5",
+      "name": "Anxious, Alex",
+      "description": "Alex is a 29 year old psychology graduate student in Vancouver, Canada living with generalized anxiety disorder. He was introduced to Calm by his therapist two years ago",
+      "derived_from_group": "G5",
+      "goals": [
+        "Reduce anxiety and stress levels",
+        "Build a consistent daily meditation habit",
+        "Control panic attacks from his generalized anxiety disorder"
+      ],
+      "pain_points": [
+        "Disruptions (techincal bugs/glitches or app crashes) during meditation sessions or panic attacks",
+        "Needs content that matches emotional state"
+     ],
+      "context": [
+        "Uses the app daily",
+        "Uses the app to replaces habits like social media scrolling",
+        "Deals with anxiety and panic attacks"
+      ],
+      "constraints": [
+        "Content must to be accessible quickly during anxiety episodes",
+        "Listeting sessions should be uninterrupted and no sudden distruptions"
+      ],
+      "evidence_reviews": [
+        "8d7af262-c04b-495c-bf8d-227f4011f199",
+        "4e4d2950-e4de-43e1-8313-8a110a0d5b3e",
+        "c5dd92cc-462c-47bf-b84a-da6963cce373",
+        "faa9c148-6de1-4946-8e0d-a1a77b9616e8",
+        "2dc25019-abd6-4102-9de8-d508cc953ba8"
+      ]
+    }  
+  ] 
+}

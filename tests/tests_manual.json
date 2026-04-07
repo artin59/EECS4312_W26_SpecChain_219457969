@@ -1,16 +1,239 @@
-
 {
   "tests": [
     {
-      "test_id": "T_auto_1",
+      "test_id": "T_manual_1",
       "requirement_id": "FR1",
-      "scenario": "Workout Logging Stability",
+      "scenario": "Subscription price visibility before trial confirmation",
       "steps": [
-        "Open the workout logging screen",
-        "Enter workout details",
-        "Submit the workout"
+        "Open the app",
+        "Navigate to free trial signup",
+        "Reach confirmation screen"
       ],
-      "expected_result": "The workout is saved successfully and the application remains stable."
+      "expected_result": "The system displays clearly (not in fine print) the exact subscription price user must pay after free trial period is over and billing date before user presses the confirm subscription button"
+    },
+    {
+      "test_id": "T_manual_2",
+      "requirement_id": "FR1",
+      "scenario": "Subscription price/billing accuracy",
+      "steps": [
+        "Start a free trial",
+        "Wait until free trial period is over"
+      ],
+      "expected_result": "The price paid and billing date matches the actual subscription terms displayed before confirming free trial"
+    },
+    {
+      "test_id": "T_manual_3",
+      "requirement_id": "FR2",
+      "scenario": "Visibility of cancel option",
+      "steps": [
+        "Open the app"
+      ],
+      "expected_result": "The cancel subscription option is present and clear"
+    },
+    {
+      "test_id": "T_manual_4",
+      "requirement_id": "FR2",
+      "scenario": "Cancel subscription from settings",
+      "steps": [
+        "Open the app",
+        "Go to account settings",
+        "Select cancel subscription"
+      ],
+      "expected_result": "Subscription is successfully canceled"
+    },
+    {
+      "test_id": "T_manual_5",
+      "requirement_id": "FR3",
+      "scenario": "Trial ending notification",
+      "steps": [
+        "Activate free trial",
+        "Wait until 24 hours before trial ends"
+      ],
+      "expected_result": "User receives a notification that their trial is about to end tomorrow"
+    },
+    {
+      "test_id": "T_manual_6",
+      "requirement_id": "FR3",
+      "scenario": "Notification delivered when device is offline and reconnects",
+      "steps": [
+        "Activate free trial",
+        "Disable the internet connection of the device more than 24 hours before the trial end time",
+        "Re-enable internet connection during the 24-hour period before the trial ends"
+      ],
+      "expected_result": "The system delivers the reminder notification after reconnection and before the trial expires"
+    },
+    {
+      "test_id": "T_manual_7",
+      "requirement_id": "FR4",
+      "scenario": "Single subscription prompt per session",
+      "steps": [
+        "Open the app",
+        "Navigate through multiple sections"
+      ],
+      "expected_result": "Only one subscription prompt is displayed during the session"
+    },
+    {
+      "test_id": "T_manual_8",
+      "requirement_id": "FR4",
+      "scenario": "New session resets prompt count",
+      "steps": [
+        "Open the app",
+        "Navigate through multiple sections",
+        "Recieve the subscription prompt",
+        "Close the app",
+        "Reopen the app",
+        "Navigate through multiple sections"
+      ],
+      "expected_result": "The new session shows only one subscription prompt is displayed as well"
+    },
+    {
+      "test_id": "T_manual_9",
+      "requirement_id": "FR5",
+      "scenario": "Uninterrupted audio playback",
+      "steps": [
+        "Start an audio session",
+        "Listen to it for the full duration"
+      ],
+      "expected_result": "The audio plays without any interruptions"
+    },
+    {
+      "test_id": "T_manual_10",
+      "requirement_id": "FR5",
+      "scenario": "Playback stability while app is in the background",
+      "steps": [
+        "Start an audio session",
+        "Minimize app"
+      ],
+      "expected_result": "Audio continues playing without interruption"
+    },
+    {
+      "test_id": "T_manual_11",
+      "requirement_id": "FR6",
+      "scenario": "Error message display",
+      "steps": [
+        "Disconnect internet",
+        "Attempt to play content"
+      ],
+      "expected_result": "An error message is displayed and clearly explain the issue is due to no internet connection"
+    },
+    {
+      "test_id": "T_manual_12",
+      "requirement_id": "FR6",
+      "scenario": "Error handling during server timeout",
+      "steps": [
+        "Throttle network speed down to simulate slow connection",
+        "Attempt to play audio content",
+        "Wait for timeout"
+      ],
+      "expected_result": "The system displays a clear error message indicating that the request timed out"
+    },
+    {
+      "test_id": "T_manual_13",
+      "requirement_id": "FR7",
+      "scenario": "Response time under peak load",
+      "steps": [
+        "Simulate peak load",
+        "Request audio content",
+        "Measure response time"
+      ],
+      "expected_result": "Response time is less than 5 seconds for at least 95% of the requests"
+    },
+    {
+      "test_id": "T_manual_14",
+      "requirement_id": "FR7",
+      "scenario": "Response time under peak load across multiple geographic regions",
+      "steps": [
+        "Simulate peak load",
+        "Send audio requests from multiple devices in multiple different geographic regions",
+        "Measure response time"
+      ],
+      "expected_result": "Response time is less than 5 seconds for at least 95% of the requests"
+    },
+    {
+      "test_id": "T_manual_15",
+      "requirement_id": "FR8",
+      "scenario": "Post-training new user meditation session timing",
+      "steps": [
+        "Provide a standardized 15 minute introduction session covering basic app navigation to a group of new users ",
+        "Ask each user to start a meditation session without assistance",
+        "Measure the time each user takes to successfully start the session"
+      ],
+      "expected_result": "At least 80% of the users successfully start a meditation session within 3 minutes without external assistance"
+    },
+    {
+      "test_id": "T_manual_16",
+      "requirement_id": "FR8",
+      "scenario": "Retention of training effectiveness after delay",
+      "steps": [
+        "Provide a standardized 15 minute introduction session covering basic app navigation to a group of new users ",
+        "wait 1 day",
+        "Ask each user to start a meditation session without assistance",
+        "Measure the time each user takes to successfully start the session"
+      ],
+      "expected_result": "At least 80% of the users successfully start a meditation session within 3 minutes without external assistance"
+    },
+    {
+      "test_id": "T_manual_17",
+      "requirement_id": "FR9",
+      "scenario": "Customer support response time",
+      "steps": [
+        "Submit a support request/ticket",
+        "Wait for response from customer support"
+      ],
+      "expected_result": "Response is received within 1 week"
+    },
+    {
+      "test_id": "T_manual_18",
+      "requirement_id": "FR9",
+      "scenario": "Customer support response rate",
+      "steps": [
+        "Submit many support requests",
+        "Track the response times"
+      ],
+      "expected_result": "At least 95% of the responses occur within 1 week"
+    },
+    {
+      "test_id": "T_manual_19",
+      "requirement_id": "FR10",
+      "scenario": "View your support request status",
+      "steps": [
+        "Submit a support request",
+        "Navigate to the support request status page"
+      ],
+      "expected_result": "System displays the current request status"
+    },
+    {
+      "test_id": "T_manual_20",
+      "requirement_id": "FR10",
+      "scenario": "Status updates after progress",
+      "steps": [
+        "Submit a support request",
+        "Simulate a progress update",
+        "Check request status again"
+      ],
+      "expected_result": "System displays the updated progress"
+    },
+    {
+      "test_id": "T_manual_21",
+      "requirement_id": "FR11",
+      "scenario": "Normal case: Navigation to audio within 5 clicks",
+      "steps": [
+        "Open app",
+        "Navigate from home screen to a calming audio",
+        "Count clicks until playback starts"
+      ],
+      "expected_result": "User reaches the calming audio within 5 clicks"
+    },
+    {
+      "test_id": "T_manual_22",
+      "requirement_id": "FR11",
+      "scenario": "Worst case: Navigation to audio within 5 clicks",
+      "steps": [
+        "Open app",
+        "Navigate from home screen to a calming audio through the least direct menus",
+        "Count clicks until playback starts"
+      ],
+      "expected_result": "User still reaches the calming audio within 5 clicks"
     }
   ]
 }

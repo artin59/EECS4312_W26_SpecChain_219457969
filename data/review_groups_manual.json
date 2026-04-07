@@ -2,11 +2,57 @@
   "groups": [
     {
       "group_id": "G1",
-      "theme": "App crashes during activity logging, THIS IS A AN EXAMPLE, PLEASE REMOVE ",
-      "review_ids": ["rev_12", "rev_33", "rev_45", "rev_89"],
+      "theme": "Unauthorized or unexpected charges during and after the free trial period",
+      "review_ids": ["59416d34-d9b9-4aac-bf40-666c2e33d6dc", "20b5a73e-28fa-4666-80b1-76537165ecf5", "e260bbfe-73a3-41ba-ab36-a27c8b843222", "c691e57f-13b8-4fb9-aec4-f8fffe50b3f9", "cb08d7eb-5b11-4dc4-bdc0-50e391e425c6", "f954026c-be58-40ac-83ab-9a1d3eaaa2dd", "6b79a28f-842f-4ff8-bfd4-5a54c6b8ce51", "23f63c26-3723-4a70-9858-952bdcbe364e", "5daa4526-959d-409e-a76a-f972e4347249", "21836793-f45d-4e6b-9d5a-aad78cc6b360"],
       "example_reviews": [
-        "The app crashes every time I log my run.",
-        "Logging workouts causes the app to freeze."
+        "free trial calm sent email forty clicked subscribed charged full price took forever manage send inquiry theyve looking eight day six day emailed cancel get refund received another generic email experiencing significant delay response time obviously dont care customer service guess im going chargeback",
+        "received free trial thirty day say app helped lot past month althoughon day twentynine canceled free trial keep charged showed canceled day thirty show canceled two thousand twentyseven yes charged year subscription refund policy needless say upset google play store careful free trial calm lesson learned",
+        "signed free trial immediately charged eighty customer service yet respond address",
+        "signed seven day free trial then charged one hundred fourteen following day impressed"
+      ]
+    },
+    {
+      "group_id": "G2",
+      "theme": "A lot of ads",
+      "review_ids": ["89f1cd49-0b84-4814-97bf-6aa2ee2cc3f5", "044cb89c-34d5-4a75-bb6d-1585f63a7b15", "88124acc-b1e9-477a-b49c-f275336f6379", "4e9e30fa-d97a-4c36-bf93-8a6e40fe1745", "b672e9d4-321c-4bba-9824-01b433771b84", "86caaf3e-e28d-4935-8de9-978b6ef70ce1", "1efa6aef-9e67-4856-a5eb-ce30b5b1b2df", "822e45f2-fef0-472d-a277-3e7af2137cca", "6c84c9e3-5dee-4af6-b38d-acf5e3bff6f9", "0af7691b-2abd-423e-bb01-cb57ea1a5c79"],
+      "example_reviews": [
+        "launching app immediately hit fullscreen ad loading screen telling take breath signup screen two ad closed saw another ad still hadnt gotten even try app never thats uninstalled 2000s wouldve called malware",
+        "came back sleep story im glad see im one sick ad honestly shameful soon ive paid im harassed spend cant get offer go away definitely calming buying family plan renewing product calm straight capitalism worst",
+        "terrible want block radio doctor office ad survey get water flowing noise quiet ability adjust",
+        "bombarded subscribe ad soon open app cant figure kind free usage everything click pull pay premium doesnt allow anything else sloppy trash app predatory"
+      ]
+    },
+    {
+      "group_id": "G3",
+      "theme": "Bugs and technical difficulties",
+      "review_ids": ["cacb8307-e35d-4693-8b9d-2e60b340d134", "7e980ec7-2092-4fe2-8f76-3f672ed916da", "d436997a-441c-4a49-b450-028c64ea3e02", "81dfba9c-2973-41f8-a263-c3c42c2d3ef2", "a77b4779-3669-4753-a55d-924e6fa170e1", "12674de0-ee0d-4ae6-87b9-28f1da8c5bc8", "2911019a-782f-48fb-8963-33a1463969e6", "95c00067-a40f-4bdb-b17b-257d54c9ea23", "07ac2f34-b50e-49b8-a88e-484620120c74", "cebb2c70-2baf-45ef-b189-a0bb02a22dc8"],
+      "example_reviews": [
+        "cannot seem cast anything google home bug meant fixed icon show still doesnt cast annoying bought kid listen meditation calm story",
+        "considering deleting unsubscribing using five year working properly month everything keep loading age doesnt play reply support far tried troubleshooting step nothing working please fix bug",
+        "unbelievably buggy app premium customer six yr cancelled plan ive growing increasingly frustrated apps ux past month content doesnt play random glitch super duper slow contacted help desk even logging ticket glitchy poor design difficult find stuff im interested app setting arent saved stuff organised well always stuff advertised even though set preference",
+        "good app lot bug bad ux make angry relaxed"
+      ]
+    },
+    {
+      "group_id": "G4",
+      "theme": "Unresponsive customer support",
+      "review_ids": ["dc1c97a2-f33e-458d-b951-9b31ec3bc20b", "f22f05c0-28ca-4ead-bd54-1a97b1ce9e88", "cc77717b-8b33-4e8b-9c55-544a10025ddb", "990349ee-855b-482c-b470-c7a11652ec98", "e836d4eb-8457-49fd-bd74-1cfa112d5213", "e49906da-549f-4f85-8b9c-70ec15badda8", "c14f3a79-0f9a-489f-832d-2728ab3c2861", "589f6715-57b1-4899-81be-48b1801436ee", "9c56c866-5626-470a-b3c6-5f649dfa159b", "064f19e9-8d33-4162-bdc9-52d7b303b0c2"],
+      "example_reviews": [
+        "purchased subscription still cant access ive waiting two week customer support respond experience caused stress calm",
+        "subscribed app paid eighty premium service eight month ago trying troubleshoot issue premium service synching app phone without service useless request support take month addressed request refund pointed workflow google play doesnt work would give zero star could company seems scam kind dont pay app",
+        "app unusable due technical problem support ignore request help sent multiple request received response",
+        "loved app year past couple month update background music listen daily fluctuates volume ands drive crazy support take month answer longer im sure whats going calm frustrating"
+      ]
+    },
+    {
+      "group_id": "G5",
+      "theme": "App effectively helps with mental health",
+      "review_ids": ["8d7af262-c04b-495c-bf8d-227f4011f199", "622a6eb1-ae43-4ee3-aa08-71cdbf194753", "4e4d2950-e4de-43e1-8313-8a110a0d5b3e", "c5dd92cc-462c-47bf-b84a-da6963cce373", "23b26ab4-e100-47e4-ad99-b603e23467ff", "ea1e8ed6-1077-4e98-8693-bf97f0f4ceb5", "faa9c148-6de1-4946-8e0d-a1a77b9616e8", "4409688a-53fe-444a-95d9-e3fbf962162b", "2dc25019-abd6-4102-9de8-d508cc953ba8", "a19ca95c-60bc-4e82-b816-f44d50f9c10e"],
+      "example_reviews": [
+        "total gamechanger mental health sleep story help drift minute daily meditation perfect way start morning beautifully designed soothing",
+        "someone sleeping difficulty found apps help ease stress keep mental health good insomnia getting better keep calm like calm thanks",
+        "love app replaced doomscrolling morning meditation mental health significantly improved become normal part selfcare routine",
+        "help anxiety sleeplessness overall mental health cant recommend enough"
       ]
     }
   ]}

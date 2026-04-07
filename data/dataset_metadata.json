@@ -1,0 +1,26 @@
+{
+  "metadata": [
+    {
+      "app_name": "Calm - Sleep, Meditate, Relax",
+      "app_id": "com.calm.android",
+      "platform": "Google Play Store",
+      "collection_method": "google-play-scraper",
+      "dataset_size": {
+        "raw": 1000,
+        "after_deduplication": 828,
+        "final_cleaned": 828
+      },
+      "cleaning_decisions": [
+        "Removed duplicate reviewIds",
+        "Removed reviews with fewer than 5 words",
+        "Removed special characters and emojis",
+        "Converted numbers to words",
+        "Lowercased all text",
+        "Removed punctuation",
+        "Removed extra whitespace",
+        "Removed stop words",
+        "Lemmatized tokens"
+      ]
+    }
+  ]
+}
