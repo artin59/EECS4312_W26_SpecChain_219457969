@@ -12,6 +12,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # PATHS
 # ---------------------------------------------------------------------------
+DATASET_PATH  = Path("data/reviews_clean.jsonl")   # ✅ FIXED
 GROUPS_PATH   = Path("data/review_groups_auto.json")
 PERSONAS_PATH = Path("personas/personas_auto.json")
 SPEC_PATH     = Path("spec/spec_auto.md")
@@ -31,6 +32,11 @@ def load_spec_requirements(md_text):
     """Extract FR_auto_X IDs from spec"""
     pattern = r"# Requirement ID: (FR_auto_\d+)"
     return re.findall(pattern, md_text)
+
+def load_dataset_size():
+    """Count number of reviews in JSONL dataset"""
+    with open(DATASET_PATH, "r", encoding="utf-8") as f:
+        return sum(1 for _ in f)
 
 # ---------------------------------------------------------------------------
 # METRICS
@@ -53,7 +59,7 @@ def compute_metrics():
     # -----------------------------
     # BASIC COUNTS
     # -----------------------------
-    dataset_size = sum(g["review_count"] for g in groups)
+    dataset_size = load_dataset_size()  # ✅ FIXED
     persona_count = len(personas)
     requirements_count = len(req_ids)
     tests_count = len(tests)
@@ -78,15 +84,18 @@ def compute_metrics():
     # -----------------------------
     # REVIEW COVERAGE
     # -----------------------------
-    total_reviews_in_groups = dataset_size  # all grouped
+    total_reviews_in_groups = sum(g["review_count"] for g in groups)
+
     review_coverage = (
-        total_reviews_in_groups / dataset_size if dataset_size else 0
+        total_reviews_in_groups / dataset_size
+        if dataset_size else 0
     )
 
     # -----------------------------
     # TRACEABILITY RATIO
     # -----------------------------
     linked_requirements = len(set(t["requirement_id"] for t in tests))
+
     traceability_ratio = (
         linked_requirements / requirements_count
         if requirements_count else 0
