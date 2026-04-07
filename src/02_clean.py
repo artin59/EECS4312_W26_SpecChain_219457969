@@ -41,7 +41,7 @@ def clean(text):
 
 
 #Load raw reviews from the json file
-raw = [json.loads(line) for line in open("../data/reviews_raw.jsonl") if line.strip()]
+raw = [json.loads(line) for line in open("data/reviews_raw.jsonl") if line.strip()]
 
 #Remove duplicates reviews by reviewId
 seen, deduped = set(), []
@@ -58,7 +58,7 @@ for r in valid:
     r["content"] = clean(r["content"])
 
 #Save the cleaned reviews in the correct file
-with open("../data/reviews_clean.jsonl", "w") as f:
+with open("data/reviews_clean.jsonl", "w") as f:
     for r in valid:
         f.write(json.dumps(r) + "\n")
 

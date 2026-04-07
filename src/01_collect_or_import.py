@@ -26,7 +26,7 @@ while len(all_reviews) < 1000:
         break
 
 #Saves the reviews in the correct file
-with open("../data/reviews_raw.jsonl", "w", encoding="utf-8") as f:
+with open("data/reviews_raw.jsonl", "w", encoding="utf-8") as f:
     for r in all_reviews:
         f.write(json.dumps(r, default=str) + "\n")
 
