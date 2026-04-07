@@ -3,14 +3,154 @@
     {
       "test_id": "T_hybrid_1",
       "requirement_id": "FR_hybrid_1",
-      "scenario": "Save a workout entry without crashing",
+     "scenario": "Validation of free trial terms display on sign-up page",
       "steps": [
-        "Open the workout logging feature",
-        "Enter workout information",
-        "Submit the workout"
+        "Navigate to the app's sign-up page",
+        "Tap on the 'Start Free Trial' button"
       ],
-      "expected_result": "The workout is saved successfully and the application does not crash.",
-      "notes": "Revised the expected result to match the updated hybrid requirement."
+      "expected_result": "The summary of free trial terms includes the duration and any charges that will be incurred after the trial period, and is clear and concise",
+      "notes": "Removed one of the steps since it was the same as the expected result"
+    },
+    {
+      "test_id": "T_hybrid_2",
+      "requirement_id": "FR_hybrid_2",
+      "scenario": "Cancel subscription with minimal steps",
+      "steps": [
+        "Log in to the account",
+        "Navigate to account settings",
+        "Cancel subscription"
+      ],
+      "expected_result": "The subscription is cancelled within 5 steps",
+      "notes": "Changed from 2 steps to 5 steps to match requirement"
+    },
+    {
+      "test_id": "T_hybrid_3",
+      "requirement_id": "FR_hybrid_3",
+      "scenario": "Validate confirmation email sent after subscription cancellation",
+      "steps": [
+        "Log in to the system with a registered user's credentials",
+        "Cancel the user's subscription"
+      ],
+      "expected_result": "A confirmation email was recieved",
+      "notes": "New requirements contains less implementation details so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_4",
+      "requirement_id": "FR_hybrid_4",
+      "scenario": "Validate meditation library content and updates",
+      "steps": [
+        "Establish a stable internet connection",
+        "Access the meditation library"
+      ],
+      "expected_result": "At least 500 meditation sessions are available",
+      "notes": "New requirements contains less implementation details so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_5",
+      "requirement_id": "FR_hybrid_5",
+      "scenario": "Validate audio content playback quality",
+      "steps": [
+        "Prepare a device capable of playing high-quality audio",
+        "Select and play a meditation session "
+      ],
+      "expected_result": "The audio plays with a minimum of 128 kbps bitrate",
+      "notes": "New requirements contains only 1 single metric so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_6",
+      "requirement_id": "FR_hybrid_6",
+      "scenario": "Search sleep stories by categories",
+      "steps": [
+        "Log in to the system as a valid user",
+        "Navigate to the sleep story section",
+        "Select a single category'"
+      ],
+      "expected_result": "The system displays a list of sleep stories that match the user'scategory",
+      "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_7",
+      "requirement_id": "FR_hybrid_7",
+      "scenario": "Uptime checker",
+      "steps": [
+        "Monitor the server/app uptime status"
+      ],
+      "expected_result": "The app should have an uptime of 99.99%",
+      "notes": "New requirements is changed drastically to be about uptime so I changed the test to reflect that"
+    },
+    {
+      "test_id": "T_hybrid_8",
+      "requirement_id": "FR_hybrid_8",
+      "scenario": "Validate screen reader",
+      "steps": [
+        "Launch the app on a device",
+        "Activate the screen reader",
+        "Navigate through the app's main menu and various screens"
+      ],
+      "expected_result": "The app provides screen reader compatibility for navigation",
+      "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_9",
+      "requirement_id": "FR_hybrid_9",
+      "notes": "This requirement has been deleted"
+    },
+    {
+      "test_id": "T_hybrid_10",
+      "requirement_id": "FR_hybrid_10",
+      "notes": "This requirement has been deleted"
+    },
+    {
+      "test_id": "T_hybrid_11",
+      "requirement_id": "FR_hybrid_11",
+      "scenario": "Validate looping sound playback",
+      "steps": [
+        "Navigate to the sleep section of the system",
+        "Select a sleep story",
+        "Verify the audio can be looped continuously"
+      ],
+      "expected_result": "The audio is looped continuously",
+      "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_11",
+      "requirement_id": "FR_hybrid_11",
+      "scenario": "Validate user progress tracking",
+      "steps": [
+        "Create a new user account and log in",
+        "Complete a meditation session",
+        "View the progress dashboard"
+      ],
+      "expected_result": "The user's number of sessions is displayed as 1",
+      "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_13",
+      "requirement_id": "FR_hybrid_13",
+      "notes": "This requirement has been deleted"
+    },
+    {
+      "test_id": "T_hybrid_14",
+      "requirement_id": "FR_hybrid_14",
+      "scenario": "Validate support request response time",
+      "steps": [
+        "Create a user account with an active subscription",
+        "Simulate a subscription issue for the user",
+        "Submit a support request through the app or website"
+      ],
+      "expected_result": "The user receives a response to their support request within 1 week",
+      "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
+    },
+    {
+      "test_id": "T_hybrid_15",
+      "requirement_id": "FR_hybrid_15",
+      "scenario": "User manages personal data",
+      "steps": [
+        "Log in to the app as a registered user",
+        "Navigate to the app's settings or account section"
+      ],
+      "expected_result": "The user can delete their personal data",
+      "notes": "New requirements contains only 1 single reqruirement so I changed the test to match that "
     }
   ]
 }

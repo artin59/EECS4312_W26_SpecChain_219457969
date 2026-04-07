@@ -30,8 +30,15 @@
 - Description: The system shall provide a library of at least 500 meditation sessions, with a minimum of 20 new sessions added every month.
 - Source Persona: Disappointed Calm User
 - Traceability: Derived from review group A2
-- Acceptance Criteria: Given the user has a stable internet connection, When the user accesses the meditation library, Then they can browse and play at least 500 meditation sessions, with clear indications of new content added within the last month.
-- Notes: No changes
+- Acceptance Criteria: Given the user has a stable internet connection, When the user accesses the meditation library, Then they can browse and play at least 500 meditation sessions
+- Notes: Cut it into two requirements
+
+# Requirement ID: FR_auto_4.5
+- Description: The system shall provide a library with a minimum of 20 new sessions added every month.
+- Source Persona: Disappointed Calm User
+- Traceability: Derived from review group A2
+- Acceptance Criteria: Given the user has a stable internet connection, When the user accesses the meditation library, then at least 20 new sessions where added since last month
+- Notes: Cut it into two requirements
 
 # Requirement ID: FR_auto_5
 - Description: The system shall ensure that all audio content is encoded at a minimum of 128 kbps bitrate 
