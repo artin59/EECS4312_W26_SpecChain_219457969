@@ -3,13 +3,194 @@
     {
       "test_id": "T_auto_1",
       "requirement_id": "FR_auto_1",
-      "scenario": "Logging a workout without crashing",
+      "scenario": "User manages subscription from account settings",
       "steps": [
-        "Open the workout logging screen",
-        "Enter workout details",
-        "Submit the workout"
+        "Log in to the Calm account with valid credentials",
+        "Navigate to the account settings page",
+        "Verify the current subscription plan is displayed",
+        "Verify the next renewal date is displayed",
+        "Cancel the subscription with a single click",
+        "Verify the subscription cancellation is confirmed"
       ],
-      "expected_result": "The workout is saved successfully and the application remains stable."
+      "expected_result": "The user can view their current subscription plan, see the next renewal date, and cancel their subscription with a single click from the account settings page."
+    },
+    {
+      "test_id": "T_auto_2",
+      "requirement_id": "FR_auto_2",
+      "scenario": "Validate transparent and accurate pricing information on subscription sign-up page",
+      "steps": [
+        "Launch the app and navigate to the subscription sign-up page",
+        "Select a subscription plan",
+        "Review the displayed pricing information"
+      ],
+      "expected_result": "The system displays a detailed breakdown of the costs, including any promotional discounts, taxes, and fees, before confirming the purchase"
+    },
+    {
+      "test_id": "T_auto_3",
+      "requirement_id": "FR_auto_3",
+      "scenario": "Validate automatic sending of subscription confirmation email after plan change",
+      "steps": [
+        "Sign up a user with an existing subscription plan",
+        "Change the user's subscription plan to a different one",
+        "Confirm the change in the system",
+        "Wait for 5 minutes",
+        "Check the user's email inbox for a confirmation email"
+      ],
+      "expected_result": "The user receives an email within 5 minutes that includes a summary of their new subscription details and a link to manage their subscription"
+    },
+    {
+      "test_id": "T_auto_4",
+      "requirement_id": "FR_auto_4",
+      "scenario": "User accesses meditation sessions and sleep stories library",
+      "steps": [
+        "Launch the app and log in with valid credentials",
+        "Verify the user is connected to a stable internet connection",
+        "Navigate to the meditation sessions and sleep stories library",
+        "Browse through the list of available meditation sessions and sleep stories",
+        "Use the search functionality to find specific content",
+        "Verify categorization of meditation sessions and sleep stories"
+      ],
+      "expected_result": "The user can access a list of at least 500 meditation sessions and 200 sleep stories, with clear categorization and functional search"
+    },
+    {
+      "test_id": "T_auto_5",
+      "requirement_id": "FR_auto_5",
+      "scenario": "Filter and search meditation sessions and sleep stories by category, duration, and narrator",
+      "steps": [
+        "Access the library of meditation sessions and sleep stories",
+        "Apply filters for category, duration, and narrator",
+        "Enter search criteria for a specific meditation session or sleep story",
+        "Submit the search or filter request"
+      ],
+      "expected_result": "The system displays a list of relevant results with clear and concise information about each session or story that matches the applied filters and search criteria"
+    },
+    {
+      "test_id": "T_auto_6",
+      "requirement_id": "FR_auto_6",
+      "scenario": "Validate clear and transparent subscription plan information",
+      "steps": [
+        "Launch the app and navigate to the subscription options page",
+        "View the available subscription plans",
+        "Verify that each plan displays its features",
+        "Verify that each plan displays its pricing information",
+        "Verify that each plan displays any free trial options"
+      ],
+      "expected_result": "The system displays a clear and concise breakdown of features, pricing, and any free trial options for each subscription plan, with no hidden fees or deceptive advertising practices"
+    },
+    {
+      "test_id": "T_auto_7",
+      "requirement_id": "FR_auto_7",
+      "scenario": "Validate navigation to meditation content and search functionality",
+      "steps": [
+        "Open the meditation app",
+        "Navigate to the meditation content section",
+        "Verify the search functionality is available",
+        "Perform a search for a specific meditation",
+        "Access the library of meditations"
+      ],
+      "expected_result": "The user can search for specific meditations and access their library within 2 clicks"
+    },
+    {
+      "test_id": "T_auto_8",
+      "requirement_id": "FR_auto_8",
+      "scenario": "Validate Google Fit integration with Calm app",
+      "steps": [
+        "Create a test user with a Google Fit account",
+        "Connect the Google Fit account to the Calm app",
+        "Verify that the Calm app has access to the Google Fit account",
+        "Simulate daily physical activity data in the Google Fit account",
+        "Wait for 24 hours",
+        "Log in to the Calm app and navigate to the health tracking section"
+      ],
+      "expected_result": "The daily activity data from Google Fit is displayed in the Calm app"
+    },
+    {
+      "test_id": "T_auto_9",
+      "requirement_id": "FR_auto_9",
+      "scenario": "Validate screen reader navigation for users with vision impairments",
+      "steps": [
+        "Launch the app on a device with a screen reader enabled",
+        "Enable the screen reader feature on the device",
+        "Navigate to the main menu using voice commands",
+        "Access meditation content using voice commands",
+        "Verify that all menu items and content are read aloud correctly by the screen reader"
+      ],
+      "expected_result": "The user can successfully navigate through the main menu and access meditation content using voice commands, with all menu items and content being read aloud correctly by the screen reader."
+    },
+    {
+      "test_id": "T_auto_10",
+      "requirement_id": "FR_auto_10",
+      "scenario": "Validate guided meditation session duration and audio playback",
+      "steps": [
+        "Launch the system and navigate to the meditation session selection page",
+        "Select a 10-minute meditation session",
+        "Start the meditation session",
+        "Verify that a calming voice and soothing music are playing",
+        "Monitor the session duration and audio playback for the full 10 minutes"
+      ],
+      "expected_result": "The system plays a calming voice and soothing music for the full 10 minutes, without interruption or pause."
+    },
+    {
+      "test_id": "T_auto_11",
+      "requirement_id": "FR_auto_11",
+      "scenario": "Validate sleep story and calming sound looping functionality",
+      "steps": [
+        "Select a sleep story from the available options",
+        "Play the selected sleep story",
+        "Choose the loop option for the sleep story",
+        "Verify that the sleep story continues to play without interruption for at least 30 minutes",
+        "Repeat steps 1-4 for a calming sound"
+      ],
+      "expected_result": "The system continues to play the selected sleep story or calming sound for at least 30 minutes without interruption when the loop option is chosen"
+    },
+    {
+      "test_id": "T_auto_12",
+      "requirement_id": "FR_auto_12",
+      "scenario": "Daily reminder for meditation or sleep story",
+      "steps": [
+        "Set up a user account with daily reminder enabled",
+        "Configure the daily reminder to trigger at a specific time",
+        "Trigger the daily reminder at the configured time",
+        "Verify the user receives a notification on their device"
+      ],
+      "expected_result": "The system sends a notification to the user's device with a suggested meditation session or sleep story"
+    },
+    {
+      "test_id": "T_auto_13",
+      "requirement_id": "FR_auto_13",
+      "scenario": "Validate 7-day free trial offer for new users",
+      "steps": [
+        "Download and install the app",
+        "Launch the app and navigate to the sign-up page",
+        "Enter valid new user information and complete the sign-up process",
+        "Verify the user is redirected to the premium content section"
+      ],
+      "expected_result": "The user is offered a 7-day free trial to access premium meditation and sleep content"
+    },
+    {
+      "test_id": "T_auto_14",
+      "requirement_id": "FR_auto_14",
+      "scenario": "Validate clear and transparent monthly subscription pricing structure",
+      "steps": [
+        "Navigate to the pricing page",
+        "Verify the monthly subscription option is displayed",
+        "Review the pricing breakdown for the monthly subscription"
+      ],
+      "expected_result": "The pricing page clearly displays the monthly subscription cost and a list of features included in the subscription"
+    },
+    {
+      "test_id": "T_auto_15",
+      "requirement_id": "FR_auto_15",
+      "scenario": "Validate free meditation and sleep content accessibility without subscription",
+      "steps": [
+        "Launch the app without a user subscription",
+        "Verify the user is not prompted to subscribe",
+        "Navigate to the meditation content section",
+        "Count the number of free meditation sessions available",
+        "Navigate to the sleep stories section",
+        "Count the number of free sleep stories available"
+      ],
+      "expected_result": "The user can access at least 5 free meditation sessions and 2 free sleep stories"
     }
   ]
 }
