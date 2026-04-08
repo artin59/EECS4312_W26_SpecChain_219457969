@@ -7,7 +7,14 @@ Please update to include:
 - Original dataset: 1000
 - Final cleaned dataset: 828
 - Exact commands to run pipeline: from project root
+
+(Optional)
 ```
+python -m venv venv
+venv\Scripts\activate 
+```
+```
+pip install -r requirements.txt #First install the dependencies
 python src/run_all.py  
 ```
 
