@@ -13,6 +13,9 @@ Please update to include:
 python -m venv venv
 venv\Scripts\activate 
 ```
+
+IMPORTANT: I cannot push my groq api key onto the public repo so I have added the command you need to run and my groq api key onto the google doc i submited for the project cover
+
 ```
 pip install -r requirements.txt #First install the dependencies
 python src/run_all.py  
