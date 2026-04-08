@@ -2,11 +2,14 @@
 
 ## instructions:
 Please update to include: 
-- App name
-- Data collection method
-- Original dataset
-- Final cleaned dataset
-- Exact commands to run pipeline
+- App name: Calm - Sleep, Meditate, Relax
+- Data collection method: google_play_scraper
+- Original dataset: 1000
+- Final cleaned dataset: 828
+- Exact commands to run pipeline: from project root
+```
+python src/run_all.py  
+```
 
 # example
 Application: [Calm]
